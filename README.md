@@ -36,9 +36,14 @@
   On classical computer, perform minimization of loss function over parameters <img src="https://render.githubusercontent.com/render/math?math=\vec{p}"> until convergence. As suggested by the authors of [[1]](https://iopscience.iop.org/article/10.1088/2058-9565/aa8072/meta), we use Basin-Hopping algorithm with L-BFGS-B optimizer, provided by python library Scipy.
   
 ## 4. Performance
-  ### 4.1 Compressing H3 eigenstates: 
   We train the model on two datasets: H3 molecular orbitals and MNIST handwritten digits.
+  ### 4.1 Compressing H3 ground state: 
+  We used qiskit chemistry to calculate the ground state of a toy molecule consisted of 3 hydrogen atoms and 4 electrons. We used parity transformation to create a 4 qubit representation of the hamiltonian. In this case, trivial symmetry is already considered in the encoding stage. The 3 hydrogen atoms form a equilateral traiangle, the seperation between atoms and the angle form 2 independent parameters as shown in the figure. Ground states are generated with 48 different configurations for the test dataset and 90 different configurations for the verification dataset.
+  <img src="H3n_toy_model.PNG" width=350px></img>
   
+  **Results:** After optimization, a testing fidelity of 99.389% and verification fidelity of 99.051% was obtained.
+  
+
   
  
   ### 4.2 Compressing MNIST handwritten digits: compression ratio 8:6
