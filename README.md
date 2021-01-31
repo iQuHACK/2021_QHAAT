@@ -24,10 +24,10 @@
 ## Training: Hybrid quantum-classical procedure
   As in many state-of-the-art quantum algorithms, we implement a hybrid procedure. 
   The steps in a single iterations are:
-   1. Prepare the input state <img src="https://render.githubusercontent.com/render/math?math=\| \psi\rangle"> and the reference state (we choose to use <img src="https://render.githubusercontent.com/render/math?math=\| 0\rangle">)
+   1. Prepare the input state <img src="https://render.githubusercontent.com/render/math?math=\ \psi\rangle"> and the reference state (we choose to use <img src="https://render.githubusercontent.com/render/math?math=\ 0\rangle">)
    2. Apply the encoder <img src="https://render.githubusercontent.com/render/math?math=\U^{\vec{p}}">.
    3. Measure the cost function, which is the fidelity between the trash state and the reference state via a Swap test.
-  On classical computer, perform minimization of loss function over parameters <img src="https://render.githubusercontent.com/render/math?math=\vec{p}"> until convergence. As suggested by the authors of [[1]], we use Basin- Hopping algorithms with L-BFGS-B optimizer, given by python library Scipy.
+  On classical computer, perform minimization of loss function over parameters <img src="https://render.githubusercontent.com/render/math?math=\vec{p}"> until convergence. As suggested by the authors of [[1]], we use Basin- Hopping algorithms with L-BFGS-B optimizer, provided by python library Scipy.
   
 ## Results
   We train the model on two datasets: Hydrogen molecule orbitals and MNIST handwritten digits.
