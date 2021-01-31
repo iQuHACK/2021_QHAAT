@@ -31,5 +31,5 @@
   Try higher dimensional data in the future?
   
 ## References
-  [1]
+  [1] J. Romero, J. P. Olson, and A. Aspuru-Guzik, “Quantumautoencoders for efficient compression of quantum data,” Quantum Science and Technology, vol. 2, p. 045001, Aug2017.
 
