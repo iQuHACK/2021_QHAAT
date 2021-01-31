@@ -46,6 +46,7 @@
     <img src="sample_digit.png" width=350px></img>
     
   We use 2-qubit reference state, hence compressing 8 qubits to 6 qubits.
+  
   **Results:** At the time of writing, the training on batch of 90 images is being run and the current fidelity is 0.83. We expect the fidelity can gets higher and we plan to render the reconstructed images to compare with the original images.
   
   
