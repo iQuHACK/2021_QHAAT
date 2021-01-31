@@ -8,14 +8,18 @@
   
   *Picture adapted from original paper. <img src="https://render.githubusercontent.com/render/math?math=\rho"> is an (n+k) input. The top k (3 in this picture) qubits are discarded after encoding, then a 'fresh' k-qubit reference state is added.*
   
-  In classical AE, we apply the encoder, a deep NN, to compress an (n + k) bits into an n bits. The NN weights are then trained on training set so as to minmize the loss, which is usually defined by the Euclidean distance between the input vector and the output reconstructed vector. On the other hand, operations in the quantum world are reversible, so the encoder gives us (n + k) qubits, which means k qubits are “trash state”. Then, to reconstruct the original state, we discard this trash state and add in “fresh” k qubits as fixed “reference state”. The cost function is defined by averaged fidelity between "trash state" and "reference state". We measure this quantity by performing the swap test. 
+  In classical AE, we apply the encoder, a deep NN, to compress an (n + k) bits into an n bits. The NN weights are then trained on training set so as to minmize the loss, which is usually defined by the Euclidean distance between the input vector and the output reconstructed vector. On the other hand, operations in the quantum world are reversible, so the encoder gives us (n + k) qubits, which means k qubits are “trash state”. Then, to reconstruct the original state, we discard this trash state and add in “fresh” k qubits as fixed “reference state”.
   Schematic circuit:
   
   <img src="schematic_circuit.png" width=600px></img> 
   
-  Encoder circuit proposed by [[1]], where the rotation parameters will be learned
+  ###Objective function
+  
+  Encoder circuit proposed by [[1]](), where the rotation parameters will be learned
   
   <img src="proposed_encoder.png" width=600px></img> 
+  
+  The objective function is defined by the fidelity between "trash state" and "reference state". We measure this quantity by performing the swap test. 
   
   Our circuit with 4-qubit input.  
   
@@ -27,16 +31,16 @@
    1. Prepare the input state <img src="https://render.githubusercontent.com/render/math?math=\| \psi\rangle"> and the reference state (we choose to use <img src="https://render.githubusercontent.com/render/math?math=\| 0\rangle">)
    2. Apply the encoder <img src="https://render.githubusercontent.com/render/math?math=\U^{\vec{p}}">.
    3. Measure the cost function, which is the fidelity between the trash state and the reference state via a Swap test.
-  On classical computer, perform minimization of loss function over parameters <img src="https://render.githubusercontent.com/render/math?math=\vec{p}"> until convergence. As suggested by the authors of [[1]], we use Basin- Hopping algorithms with L-BFGS-B optimizer, provided by python library Scipy.
+  On classical computer, perform minimization of loss function over parameters <img src="https://render.githubusercontent.com/render/math?math=\vec{p}"> until convergence. As suggested by the authors of [[1]](), we use Basin- Hopping algorithm with L-BFGS-B optimizer, provided by python library Scipy.
   
 ## Results
-  We train the model on two datasets: Hydrogen molecule orbitals and MNIST handwritten digits.
+  We train the model on two datasets: H3 molecule orbitals and MNIST handwritten digits.
  
   Results:
   
   \\add figures.
   
-  Due to limitations of time and resources, we was not able to......
+  Due to time limitation, we was not able to run simulation on IonQ cloud.
 ## Discussion
   Compression rate not impressive.
   Encoder circuit not universal.
