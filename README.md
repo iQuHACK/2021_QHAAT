@@ -53,10 +53,10 @@
   
   Due to time limitation, we was not able to run simulations on IonQ cloud.
 ## 5. Discussion and future work
-  When applying this method in practice, one must consider resource limitations. Since we need to perform multiple shots for swap test, we will need to prepare multiple copies of input state and reference state, where preparing the latter is apparently easier than the former.
-  Furthermore, we believe our encoder circuit used in this model need to be improved. Particularly, we want to design a more powerful circuit, for example, consisting of general d-qubit gates, where d<img src="https://render.githubusercontent.com/render/math?math=\geq">2. Note that, as long as d is small, the number of trainable parameters is polynomial in terms of input dimension. We also want to try higher dimensional data and higher compression rate when we have time in future.
+  When applying this method in practice, one must consider resource limitations. Since we need to perform multiple shots for swap test, we will need to prepare multiple copies of input state and reference state, where preparing the latter is apparently easier than the former.  Furthermore, we believe our encoder circuit used in this model need to be improved. Particularly, we want to design a more powerful circuit, for example, consisting of general d-qubit gates, where d<img src="https://render.githubusercontent.com/render/math?math=\geq">2. Note that, as long as d is small, the number of trainable parameters is polynomial in terms of input dimension. We also want to try higher dimensional data and higher compression rate in our future work.
   
 ## References
   [1] J. Romero, J. P. Olson, and A. Aspuru-Guzik, “Quantumautoencoders for efficient compression of quantum data,” Quantum Science and Technology, vol. 2, p. 045001, Aug2017.
+  
   [2] Swap Test, Wikipedia. https://en.wikipedia.org/wiki/Swap_test
 
