@@ -43,6 +43,8 @@
  
   ### 4.2 Compressing MNIST handwritten digits: compression ratio 8:6
   We first pre-process the dataset into 16x16 blackwhite images, then encode the 256 pixels into 8-qubit states. We use 2-qubit reference state, hence compressing 8 qubits to 6 qubits.
+    <img src="sample_digit.png" width=400px></img>
+
   
   **Results:** At the time of writing, the training on batch of 90 images is being run and the current fidelity is 0.83. We expect the fidelity can gets higher and we plan to render the reconstructed images to compare with the original images.
   
