@@ -26,7 +26,7 @@
  
   <img src="our_circuit.png" width=800px></img> 
 
-## Training: Hybrid quantum-classical procedure
+## Training procedure: Hybrid quantum-classical model
   As in many state-of-the-art quantum algorithms, we implement a hybrid procedure. 
   The steps in a single iterations are:
    1. Prepare the input state <img src="https://render.githubusercontent.com/render/math?math=\| \psi\rangle"> and the reference state (we choose to use <img src="https://render.githubusercontent.com/render/math?math=\| 0\rangle">)
@@ -35,18 +35,22 @@
    
   On classical computer, perform minimization of loss function over parameters <img src="https://render.githubusercontent.com/render/math?math=\vec{p}"> until convergence. As suggested by the authors of [[1]](https://iopscience.iop.org/article/10.1088/2058-9565/aa8072/meta), we use Basin-Hopping algorithm with L-BFGS-B optimizer, provided by python library Scipy.
   
-## Results
-  We train the model on two datasets: H3 molecule orbitals and MNIST handwritten digits.
- 
-  Results:
+## Performance
+  #### Compressing H3 eigenstates: 
+  We train the model on two datasets: H3 molecular orbitals and MNIST handwritten digits.
   
-  \\add figures.
+  
+ 
+  #### Compressing MNIST handwritten digits: compression ratio 8:6
+  We first pre-process the dataset into 16x16 blackwhite images, then encode the 256 pixels into 8-qubit states. We use 2-qubit reference state, hence compressing 8 qubits to 6 qubits.
+  **Results:** At the time of writing, the training on batch of 90 images is being run and the current fidelity is 0.83. We expect the fidelity can gets higher and we plan to render the reconstructed images to compare with the original images.
+  
+  
   
   Due to time limitation, we was not able to run simulation on IonQ cloud.
-## Discussion
-  Compression rate not impressive.
-  Encoder circuit not universal.
-  Try higher dimensional data in the future.
+## Discussion and future work
+  When applying this method in practice, one must consider resource limitations. Since we need to perform multiple shots for swap test, we will need to prepare multiple copies of input state and reference state, where preparing the latter is apparently easier than the former.
+  Furthermore, we believe our encoder circuit used in this model need to be improved. Particularly, we want to design a more powerful circuit, for example, consisting of general d-qubit gates, where d<img src="https://render.githubusercontent.com/render/math?math=\geq">2. Note that, as long as d is small, the number of trainable parameters is polynomial in terms of input dimension. We also want to try higher dimensional data and higher compression rate when we have time in future.
   
 ## References
   [1] J. Romero, J. P. Olson, and A. Aspuru-Guzik, “Quantumautoencoders for efficient compression of quantum data,” Quantum Science and Technology, vol. 2, p. 045001, Aug2017.
