@@ -10,10 +10,15 @@
   
   In classical AE, we apply the encoder, a deep NN, to compress an (n + k) bits into an n bits. The NN weights are then trained on training set so as to minmize the loss, which is usually defined by the Euclidean distance between the input vector and the output reconstructed vector. On the other hand, operations in the quantum world are reversible, so the encoder gives us (n + k) qubits, which means k qubits are “trash state”. Then, to reconstruct the original state, we discard this trash state and add in “fresh” k qubits as fixed “reference state”. The cost function is defined by averaged fidelity between "trash state" and "reference state". We measure this quantity by performing the swap test. 
   Schematic circuit:
-  <img src="schematic_circuit.png" width=800px></img> 
+  
+  <img src="schematic_circuit.png" width=600px></img> 
+  
   Encoder circuit proposed by [[1]], where the rotation parameters will be learned
-  <img src="proposed_encoder.png" width=800px></img> 
+  
+  <img src="proposed_encoder.png" width=600px></img> 
+  
   Our circuit with 4-qubit input.  
+  
   <img src="our_circuit.png" width=800px></img> 
 
 ## Training: Hybrid quantum-classical procedure
