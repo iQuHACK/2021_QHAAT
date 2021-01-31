@@ -39,11 +39,10 @@
   We train the model on two datasets: H3 molecular orbitals and MNIST handwritten digits.
   ### 4.1 Compressing H3 ground state: 
   We used qiskit chemistry to calculate the ground state of a toy molecule consisted of 3 hydrogen atoms and 4 electrons. We used parity transformation to create a 4 qubit representation of the hamiltonian. In this case, trivial symmetry is already considered in the encoding stage. The 3 hydrogen atoms form a equilateral traiangle, the seperation between atoms and the angle form 2 independent parameters as shown in the figure. Ground states are generated with 48 different configurations for the test dataset and 90 different configurations for the verification dataset.
-  <img src="H3n_toy_model.PNG" width=350px></img>
-  
-  **Results:** After optimization, a testing fidelity of 99.389% and verification fidelity of 99.051% was obtained.
-  
 
+  <img src="H3n_toy_model.PNG" width=350px></img>
+
+  **Results:** After optimization, a testing fidelity of 99.389% and verification fidelity of 99.051% was obtained.
   
  
   ### 4.2 Compressing MNIST handwritten digits: compression ratio 8:6
@@ -58,7 +57,13 @@
   
   Due to time limitation, we was not able to run simulations on IonQ cloud.
 ## 5. Discussion and future work
-  When applying this method in practice, one must consider resource limitations. Since we need to perform multiple shots for swap test, we will need to prepare multiple copies of input state and reference state, where preparing the latter is apparently easier than the former.  Furthermore, we believe our encoder circuit used in this model need to be improved. Particularly, we want to design a more powerful circuit, for example, consisting of general d-qubit gates, where d<img src="https://render.githubusercontent.com/render/math?math=\geq">2. Note that, as long as d is small, the number of trainable parameters is polynomial in terms of input dimension. We also want to try higher dimensional data and higher compression rate in our future work.
+  In terms of the parameter space, the number of parameter scales as the number of qubits squared. Although compared to the state space scaling with the exponential of the number of qubits, this is smaller. But for the current scale of quantum computers, this still poses some limitations.
+
+  Classically, we can train it by calculating the fidelity analytically and perform optimization using standard algorithms. In principle, we can calculate the gradient of the parameters analytically, but we did not have time to explore that. We evaluated the fidelity function with perturbations to approximate the gradient, which is limiting the training speed. We would explore this option in the future for a model trained classically but evaluated quantumly.
+
+  For QPU based training, we have no analytical formula for the fidelity. Evaluating high fidelity requires high amount of sampling for the swap test. We will need to prepare multiple copies of input state and reference state, where preparing the latter is apparently easier than the former. We also need many trail perturbations of the parameters to approximate the gradient for training. Moving forward, we might need a better training scheme that calculate the gradient in a quantum fashion?
+
+  Furthermore, we believe our encoder circuit used in this model need to be improved. Particularly, we want to design a more powerful circuit, for example, consisting of general d-qubit gates, where d<img src="https://render.githubusercontent.com/render/math?math=\geq">2. Note that, as long as d is small, the number of trainable parameters is polynomial in terms of input dimension. We also want to try higher dimensional data and higher compression rate in our future work.
   
 ## References
   [1] J. Romero, J. P. Olson, and A. Aspuru-Guzik, “Quantumautoencoders for efficient compression of quantum data,” Quantum Science and Technology, vol. 2, p. 045001, Aug2017.
